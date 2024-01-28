@@ -1,0 +1,190 @@
+<div class="dashboard">
+  <mat-card>
+    <mat-card-title>
+      <span>{{ userName }}</span>
+      <div class="button">
+        <button (click)="signout()" mat-button class="sign-out">
+          Sign out
+        </button>
+      </div>
+    </mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="studentForm" (submit)="addStudent()">
+        <h2>Add new student</h2>
+        <mat-form-field appearance="outline">
+          <input
+            type="text"
+            matInput
+            placeholder="First name"
+            formControlName="firstName"
+          />
+          <p
+            class="error"
+            *ngIf="
+              studentForm.get('firstName')?.invalid &&
+              (studentForm.get('firstName')?.dirty ||
+                studentForm.get('firstName')?.touched)
+            "
+          >
+            Incorrect first name
+          </p>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <input
+            type="text"
+            matInput
+            placeholder="Last name"
+            formControlName="lastName"
+          />
+          <p
+            class="error"
+            *ngIf="
+              studentForm.get('lastName')?.invalid &&
+              (studentForm.get('lastName')?.dirty ||
+                studentForm.get('lastName')?.touched)
+            "
+          >
+            Incorrect last name
+          </p>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <input
+            type="email"
+            matInput
+            placeholder="Email"
+            formControlName="email"
+          />
+          <p
+            class="error"
+            *ngIf="
+              studentForm.get('email')?.invalid &&
+              (studentForm.get('email')?.dirty ||
+                studentForm.get('email')?.touched)
+            "
+          >
+            Incorrect email
+          </p>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <input
+            type="text"
+            matInput
+            placeholder="Mobile"
+            formControlName="mobile"
+          />
+          <p
+            class="error"
+            *ngIf="
+              studentForm.get('mobile')?.invalid &&
+              (studentForm.get('mobile')?.dirty ||
+                studentForm.get('mobile')?.touched)
+            "
+          >
+            Incorrect email
+          </p>
+        </mat-form-field>
+
+        <div class="button">
+          <p *ngIf="" class="error"></p>
+          <button
+            [disabled]="studentForm.invalid || isAddingStudent"
+            type="submit"
+            mat-button
+          >
+            <span *ngIf="!isAddingStudent">Add Student</span>
+            <mat-spinner
+              *ngIf="isAddingStudent"
+              mode="indeterminate"
+              diameter="25"
+              class="spinner"
+            ></mat-spinner>
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  <div class="table-div">
+    <table mat-table [dataSource]="studentsDataSource" class="mat-elevation-z0">
+      <!-- Number Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          {{ i + 1 }}
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+      </ng-container>
+
+      <!-- Last Name Column -->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef>Last Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.lastName }}
+        </td></ng-container
+      >
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <!-- Mobile Column -->
+      <ng-container matColumnDef="mobileNumber">
+        <th mat-header-cell *matHeaderCellDef>Mobile</th>
+        <td mat-cell *matCellDef="let element">{{ element.mobileNumber }}</td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>Edit</th>
+        <td mat-cell *matCellDef="let element">
+          <button class="edit-btn" mat-button (click)="openDialog(element)">
+            <mat-icon aria-hidden="false" class="mat-icon"> edit </mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>Delete</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            class="delete-btn"
+            mat-button
+            (click)="deleteStudent(element)"
+          >
+            <mat-icon aria-hidden="false" class="mat-icon"> delete </mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <div
+      *ngIf="isStudentsDataLoading || isDeleting || isAddingStudent"
+      class="students-loading"
+    >
+      <mat-spinner
+        mode="indeterminate"
+        diameter="35"
+        class="spinner"
+      ></mat-spinner>
+    </div>
+    <p
+      class="p-no-students"
+      *ngIf="
+        studentsDataSource.length === 0 &&
+        !isStudentsDataLoading &&
+        !isDeleting &&
+        !isAddingStudent
+      "
+    >
+      No Students Found...
+    </p>
+  </div>
+</div>

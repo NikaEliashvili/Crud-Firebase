@@ -1,0 +1,78 @@
+<mat-card>
+  <h3 class="header">Sign Up</h3>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <mat-form-field appearance="outline">
+        <input
+          type="email"
+          matInput
+          placeholder="Email"
+          formControlName="email"
+          name="email"
+        />
+        <p
+          *ngIf="
+            form.get('email')?.invalid &&
+            (form.get('email')?.dirty || form.get('email')?.touched)
+          "
+          class="error"
+        >
+          Incorrect Email
+        </p>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input
+          type="password"
+          name="password"
+          matInput
+          placeholder="Password"
+          formControlName="password"
+        />
+        <p
+          *ngIf="
+            form.get('password')?.invalid &&
+            (form.get('password')?.dirty || form.get('password')?.touched)
+          "
+          class="error"
+        >
+          Incorrect password
+        </p>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input
+          type="password"
+          matInput
+          placeholder="Confirm password"
+          formControlName="confirmPassword"
+        />
+        <p
+          *ngIf="
+            form.errors?.['PasswordNoMatch']
+          "
+          class="error"
+        >
+          Password does not match
+        </p>
+      </mat-form-field>
+
+      <div class="button">
+        <button type="submit" mat-button [disabled]="form.invalid || isLogging">
+          <span *ngIf="!isLogging">Sign up</span>
+          <mat-spinner
+            *ngIf="isLogging"
+            mode="indeterminate"
+            diameter="25"
+            class="spinner"
+          ></mat-spinner>
+        </button>
+        <p *ngIf="hasErrors" class="error">Email is already used</p>
+      </div>
+      <div class="p-new-account">
+        <p>
+          Already have an account?
+          <a href="login"> Log in </a>
+        </p>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,320 @@
+.dashboard {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    /* flex-direction: column-reverse; */
+    justify-content: center;
+    /* align-items: center; */
+    gap: 2rem;
+    padding: 2rem;
+    color: rgb(18, 9, 61);
+}
+
+
+mat-card {
+    margin: 0 auto;
+    max-width: 800px;
+    width: 40%;
+    min-width: 400px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid blueviolet;
+    border-radius: 1rem;
+}
+
+
+
+
+
+mat-card h1 {
+    font-size: 2rem;
+    color: blueviolet;
+    font-weight: 700;
+}
+
+
+.button {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.button button {
+    width: 100%;
+    padding: 1.25rem;
+    background-color: blueviolet;
+    color: white;
+    font-size: 1.125rem;
+    font-family: inherit;
+}
+
+.button button:disabled,
+.button button:disabled:hover {
+    opacity: 0.7;
+    cursor: default;
+}
+
+
+
+
+
+
+mat-card-title {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(138, 43, 226, 0.1);
+}
+
+
+.button .sign-out {
+    height: auto;
+    font-size: 0.95rem;
+    padding: 0rem 0.5rem;
+}
+
+
+mat-card-content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+mat-card-content form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+mat-form-field {
+    position: relative;
+    width: 100%;
+}
+
+
+
+button {
+    width: 100%;
+    padding: 1.25rem;
+    background-color: blueviolet;
+    color: white;
+    font-size: 1.125rem;
+    font-family: inherit;
+    transition: all 0.3s ease-in-out;
+}
+
+button:disabled,
+button:disabled:hover {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.error {
+    position: absolute;
+    top: 95%;
+    left: -0.6rem;
+    color: red;
+    font-size: 12px;
+}
+
+.button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.button .error {
+    all: unset;
+    font-size: 1.125rem;
+    background-color: rgba(239, 40, 40, 0.9);
+    color: rgb(244, 234, 234);
+    text-align: center;
+    padding: 0.9rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    animation: error-message 0.5s ease-out 1;
+}
+
+.p-new-account {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: rgb(53, 53, 59);
+}
+
+.p-new-account .p-forgot-pass {
+    margin: 0;
+    cursor: pointer;
+}
+
+.logging {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+:host ::ng-deep .button .spinner.mat-mdc-progress-spinner {
+    --mdc-circular-progress-active-indicator-color: #fbfbfb;
+    opacity: 0.8;
+}
+
+:host ::ng-deep .spinner.mat-mdc-progress-spinner {
+    --mdc-circular-progress-active-indicator-color: #692f96;
+    opacity: 0.8;
+}
+
+.google-btn {
+    margin-top: 1rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8rem;
+    box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.17);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgba(42, 40, 40, 0.9);
+    background-color: whitesmoke;
+    border: 1px solid transparent;
+    transition: all 0.3s 0.05s linear;
+}
+
+.google-btn:hover {
+    border-color: blueviolet;
+    color: blueviolet;
+    cursor: pointer;
+    box-shadow: 0 0 7px 0px rgba(0, 0, 0, 0.3);
+}
+
+.google-btn .google-logo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 1rem;
+    margin: auto 0;
+    width: 25px;
+}
+
+hr {
+    margin-top: 1rem;
+    border-radius: 2rem;
+    height: 2px;
+    width: 100%;
+    background-color: rgba(138, 43, 226, 0.1);
+    border: none;
+}
+
+
+
+.mat-elevation-z0 {
+    table-layout: none;
+    width: 100%;
+    min-width: auto;
+
+    box-shadow: none;
+    border-radius: 1rem;
+}
+
+
+table {
+    overflow: hidden;
+    border-radius: 1rem;
+    width: 100%;
+}
+
+.table-div {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 1rem;
+    max-height: 550px;
+    overflow-y: auto;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.08);
+}
+
+
+
+button.edit-btn,
+button.delete-btn {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+button.delete-btn {
+    background-color: red;
+}
+
+mat-icon.mat-icon {
+    margin: 0;
+    transform: scale(1.4);
+}
+
+
+.students-loading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+
+.p-no-students {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 400;
+    font-style: italic;
+    color: rgb(117, 17, 17)
+}
+
+
+@keyframes error-message {
+    from {
+        transform: translateY(-100%) scale(1, 0);
+        opacity: 0.3;
+        z-index: -1;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+
+
+
+
+@media (max-width: 1000px) {
+    .dashboard {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-around;
+        gap: 2rem;
+        padding: 2rem;
+        width: 100%;
+        color: rgb(18, 9, 61);
+    }
+
+    mat-card {
+        width: 100%;
+        max-width: 1000px;
+    }
+}

@@ -1,0 +1,109 @@
+<h1 mat-dialog-title class="dialog-title">
+  Student: {{ data.firstName + " " + data.lastName }}
+</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="studentForm">
+    <mat-form-field appearance="outline">
+      <input
+        type="text"
+        matInput
+        placeholder="First name"
+        formControlName="firstName"
+      />
+      <p
+        class="error"
+        *ngIf="
+          studentForm.get('firstName')?.invalid &&
+          (studentForm.get('firstName')?.dirty ||
+            studentForm.get('firstName')?.touched)
+        "
+      >
+        Incorrect first name
+      </p>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <input
+        type="text"
+        matInput
+        placeholder="Last name"
+        formControlName="lastName"
+      />
+      <p
+        class="error"
+        *ngIf="
+          studentForm.get('lastName')?.invalid &&
+          (studentForm.get('lastName')?.dirty ||
+            studentForm.get('lastName')?.touched)
+        "
+      >
+        Incorrect last name
+      </p>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <input
+        type="email"
+        matInput
+        placeholder="Email"
+        formControlName="email"
+      />
+      <p
+        class="error"
+        *ngIf="
+          studentForm.get('email')?.invalid &&
+          (studentForm.get('email')?.dirty || studentForm.get('email')?.touched)
+        "
+      >
+        Incorrect email
+      </p>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <input
+        type="text"
+        matInput
+        placeholder="Mobile"
+        formControlName="mobile"
+      />
+      <p
+        class="error"
+        *ngIf="
+          studentForm.get('mobile')?.invalid &&
+          (studentForm.get('mobile')?.dirty ||
+            studentForm.get('mobile')?.touched)
+        "
+      >
+        Incorrect email
+      </p>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <p *ngIf="error" class="error">{{ error }}</p>
+  <div class="button">
+    <button class="cancel-btn" mat-button (click)="onNoClick()">Cancel</button>
+    <abbr [title]="studentForm.invalid ? 'Fill All Fields!' : ''">
+      <button
+        [disabled]="studentForm.invalid || isUpdatingStudent"
+        mat-button
+        (click)="updateStudent()"
+      >
+        <span *ngIf="!isUpdatingStudent">Submit</span>
+        <mat-spinner
+          *ngIf="isUpdatingStudent"
+          mode="indeterminate"
+          diameter="25"
+          class="spinner"
+        ></mat-spinner>
+      </button>
+    </abbr>
+  </div>
+</div>
+
+<!-- <div >
+  
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>
+    Ok
+  </button>
+  
+</div> -->

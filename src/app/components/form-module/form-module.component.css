@@ -1,0 +1,118 @@
+mat-dialog-content {
+    margin: 0 auto;
+    max-width: 800px;
+    width: 40%;
+    min-width: 400px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid blueviolet;
+    border-radius: 1rem;
+}
+
+
+
+:host ::ng-deep .spinner.mat-mdc-progress-spinner {
+    --mdc-circular-progress-active-indicator-color: #ffffff;
+    opacity: 0.8;
+}
+
+.mdc-dialog__title.dialog-title {
+    color: rgba(0, 0, 0, 0.7)
+}
+
+
+.button {
+    margin: 0 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 1rem;
+}
+
+.button button {
+    width: fit-content;
+    padding: 1.25rem;
+    background-color: blueviolet;
+    color: white;
+    font-size: 1.125rem;
+    font-family: inherit;
+}
+
+.button .cancel-btn {
+    background-color: rgb(220, 217, 217);
+    color: rgb(90, 90, 91);
+}
+
+.button button:disabled,
+.button button:disabled:hover {
+    opacity: 0.7;
+    cursor: default;
+}
+
+
+
+
+mat-card-title {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(138, 43, 226, 0.1);
+}
+
+
+.button .sign-out {
+    height: auto;
+    font-size: 0.95rem;
+    padding: 0rem 0.5rem;
+}
+
+
+mat-card-content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+mat-card-content form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+mat-form-field {
+    position: relative;
+    width: 100%;
+}
+
+
+
+button {
+    width: 100%;
+    padding: 1.25rem;
+    background-color: blueviolet;
+    color: white;
+    font-size: 1.125rem;
+    font-family: inherit;
+    transition: all 0.3s ease-in-out;
+}
+
+button:disabled,
+button:disabled:hover {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.error {
+    position: absolute;
+    top: 95%;
+    left: -0.6rem;
+    color: red;
+    font-size: 12px;
+}
