@@ -29,7 +29,7 @@ mat-dialog-content {
     margin: 0 1rem;
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     gap: 1rem;
 }
