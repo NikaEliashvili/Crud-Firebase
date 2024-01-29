@@ -72,7 +72,7 @@ export class AuthService {
 
   // Sign In With Google
   async googleSignIn() {
-    return this.fireAuth
+    return await this.fireAuth
       .signInWithPopup(new GoogleAuthProvider())
       .then((res) => {
         localStorage.setItem('jwt', JSON.stringify(res.user?.uid));

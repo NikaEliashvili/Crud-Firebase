@@ -1,7 +1,7 @@
 <div class="dashboard">
   <mat-card>
     <mat-card-title>
-      <span>{{ userName }}</span>
+      <span>{{ currentUser?.email }}</span>
       <div class="button">
         <button (click)="signout()" mat-button class="sign-out">
           Sign out
@@ -80,7 +80,7 @@
                 studentForm.get('mobile')?.touched)
             "
           >
-            Incorrect email
+            Incorrect mobile format
           </p>
         </mat-form-field>
 

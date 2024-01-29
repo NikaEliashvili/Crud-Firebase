@@ -15,7 +15,6 @@ import { FormModuleComponent } from '../form-module/form-module.component';
 export class DashboardComponent {
   isLogged: boolean = false;
   currentUser: any = null;
-  userName: string = '';
   isStudentsDataLoading: boolean = false;
   isDeleting: boolean = false;
   isAddingStudent: boolean = false;
@@ -41,9 +40,6 @@ export class DashboardComponent {
   ];
   studentsDataSource: Student[] = [];
 
-  animal: string = '';
-  name: string = '';
-
   constructor(
     private auth: AuthService,
     private router: Router,
@@ -56,8 +52,9 @@ export class DashboardComponent {
         if (!res?.emailVerified) {
           this.router.navigate(['/login']);
         } else {
-          this.currentUser = { email: res.email };
-          this.createUserNameByEmail(this.currentUser.email);
+          console.log(res.uid);
+          this.getAllStudents(res?.uid);
+          this.currentUser = { email: res.email, userId: res.uid };
         }
       });
     } else {
@@ -67,7 +64,10 @@ export class DashboardComponent {
 
   // NgOnInit
   ngOnInit() {
-    this.getAllStudents();
+    if (this.currentUser?.userId) {
+      console.log(this.currentUser.userId);
+      this.getAllStudents(this.currentUser.userId);
+    }
   }
 
   openDialog(student: Student): void {
@@ -85,24 +85,26 @@ export class DashboardComponent {
   }
 
   // Get All Students
-  getAllStudents() {
+  getAllStudents(userId: string) {
     this.isStudentsDataLoading = true;
-    this.data.getAllStudents().subscribe((res) => {
-      this.studentsDataSource = res.map((e: any) => {
-        const data = e.payload.doc.data();
-        data.id = e.payload.doc.id;
-        return data;
-      });
-      this.isStudentsDataLoading = false;
-    });
+    this.data.getAllStudentsByUserId(userId).subscribe(
+      (students: Student[]) => {
+        this.studentsDataSource = students;
+        this.isStudentsDataLoading = false;
+      },
+      (error) => {
+        this.isStudentsDataLoading = false;
+      }
+    );
   }
 
   // Add New Student
   addStudent() {
-    if (this.studentForm.valid) {
+    if (this.studentForm.valid && this.currentUser.userId) {
       this.isAddingStudent = true;
       const studentObj: Student = {
         id: '',
+        userId: this.currentUser.userId,
         firstName: this.studentForm.get('firstName')?.value,
         lastName: this.studentForm.get('lastName')?.value,
         email: this.studentForm.get('email')?.value,
@@ -146,18 +148,6 @@ export class DashboardComponent {
   //  Sign Out
   signout() {
     this.auth.signOut();
-  }
-
-  createUserNameByEmail(email: string) {
-    const emailArr = email?.split('');
-    if (emailArr) {
-      for (let a of emailArr) {
-        if (a === '@') {
-          break;
-        }
-        this.userName += a;
-      }
-    }
   }
 
   clearFormInputs() {

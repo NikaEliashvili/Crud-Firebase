@@ -39,6 +39,7 @@ export class FormModuleComponent {
     this.isUpdatingStudent = true;
     const studentObj = {
       id: this.data.id,
+      userId: this.data.userId,
       firstName: this.studentForm.get('firstName')?.value,
       lastName: this.studentForm.get('lastName')?.value,
       email: this.studentForm.get('email')?.value,
