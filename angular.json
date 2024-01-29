@@ -11,11 +11,8 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "customWebpackConfig": {
-              "path": "src/custom-webpack.config.ts"
-            },
             "outputPath": "dist/crud-firebase",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -33,13 +30,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "3000kb",
-                  "maximumError": "2mb"
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "3000kb",
-                  "maximumError": "100kb"
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
               ],
               "outputHashing": "all"
@@ -56,7 +53,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "browserTarget": "Crud-Firebase:build:production"

@@ -45,11 +45,13 @@ export class LoginComponent {
   signInWithGoogle() {
     this.auth
       .googleSignIn()
-      .then((res) => {
-        console.log(res);
-      })
+      .then((res) => {})
       .catch((error) => {
         console.log(error);
+        this.hasErrors = error.code.replace('auth/', '').replaceAll('-', ' ');
+        if (this.hasErrors === 'invalid credential') {
+          this.hasErrors = 'Email or password is incorrect';
+        }
       });
   }
 }
