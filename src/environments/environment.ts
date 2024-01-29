@@ -1,10 +1,10 @@
 export const environment = {
   firebaseConfig: {
-    apiKey: 'AIzaSyCiA6Tm0Ts_d_Lg-9isnV0DK_lH0Oa5mcw',
-    authDomain: 'angular-crud-test-f6792.firebaseapp.com',
-    projectId: 'angular-crud-test-f6792',
-    storageBucket: 'angular-crud-test-f6792.appspot.com',
-    messagingSenderId: '745421088701',
-    appId: '1:745421088701:web:4d47a0ecf933b4c514d4d4',
+    apiKey: `${process.env['API_KEY']}`,
+    authDomain: `${process.env['AUTH_DOMAIN']}`,
+    projectId: `${process.env['PROJECT_ID']}`,
+    storageBucket: `${process.env['STORAGE_BUCKET']}`,
+    messagingSenderId: `${process.env['MESSAGING_SENDER_ID']}`,
+    appId: `${process.env['APP_ID']}`,
   },
 };
