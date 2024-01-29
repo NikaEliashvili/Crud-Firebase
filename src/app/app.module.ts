@@ -50,8 +50,7 @@ const materials = [
     materials,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
-  exports: [materials],
-  providers: [],
+  providers: [materials],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

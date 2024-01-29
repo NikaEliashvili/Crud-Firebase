@@ -1,0 +1,56 @@
+.error-page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('/assets/error-background-img.svg'), #8C82B3;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.error-page img {
+    width: 90%;
+    height: 90%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+
+.back-btn {
+    all: unset;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    font-size: 1.25rem;
+    color: rgb(221, 213, 213);
+    background-color: rgb(52, 54, 58);
+    padding: 0.7rem 2rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+    transition: 0.125s ease-in-out;
+}
+
+.back-icon {
+    margin: 0;
+    transform: scale(0.8);
+}
+
+.back-btn:hover {
+    background-color: rgb(32, 33, 35);
+    color: white;
+}
+
+.back-btn:active {
+    transform: scale(0.9);
+}
+
+.back-btn:hover .back-icon {
+    color: white;
+}
