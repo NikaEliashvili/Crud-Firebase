@@ -1,7 +1,15 @@
 <div class="dashboard">
   <mat-card>
     <mat-card-title>
-      <span class="user-email">{{ currentUser?.email }}</span>
+      <span class="user-email">
+        {{ currentUser?.email }}
+        <mat-spinner
+          *ngIf="hasCurrentUser"
+          mode="indeterminate"
+          diameter="35"
+          class="spinner"
+        ></mat-spinner>
+      </span>
       <div class="button">
         <button (click)="signout()" mat-button class="sign-out">
           Sign out

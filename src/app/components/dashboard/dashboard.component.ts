@@ -18,6 +18,7 @@ export class DashboardComponent {
   isStudentsDataLoading: boolean = false;
   isDeleting: boolean = false;
   isAddingStudent: boolean = false;
+  hasCurrentUser: boolean = false;
   studentForm: FormGroup = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
@@ -48,7 +49,9 @@ export class DashboardComponent {
   ) {
     this.isLogged = JSON.parse(localStorage.getItem('jwt') as any);
     if (this.isLogged) {
+      this.hasCurrentUser = true;
       this.auth.getCurrentUser().subscribe((res) => {
+        this.hasCurrentUser = false;
         if (!res?.emailVerified) {
           this.router.navigate(['/login']);
         } else {
